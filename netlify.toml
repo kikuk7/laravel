@@ -1,0 +1,17 @@
+# netlify.toml
+[build]
+  command = "composer install && npm install && npm run build"
+  publish = "public"
+
+[build.environment]
+  NODE_VERSION = "18" # Atau "20"
+  PHP_VERSION = "8.2" # Sesuaikan dengan versi PHP Anda
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+[[redirects]]
+  from = "/*"
+  to = "/.netlify/functions/server"
+  status = 200
